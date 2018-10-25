@@ -12,7 +12,14 @@
 					</a>
 				{% endif %}
 			</div>
-			<div class="col-sm-4 small">
+			{% if display_item_group %}
+			<div class="col-sm-2 small" style="margin-top: 8px;">
+				<a data-type="item_group"
+					data-name="{{ d.item_group }}">{{ d.item_group }}
+				</a>
+			</div>
+			{% endif %}
+			<div class="col-sm-{%if display_item_group %}2{% else %}4{% endif %} small">
 				<span class="inline-graph">
 					<span class="inline-graph-half" title="{{ __("Reserved Qty") }}">
 						<span class="inline-graph-count">{{ d.total_reserved }}</span>

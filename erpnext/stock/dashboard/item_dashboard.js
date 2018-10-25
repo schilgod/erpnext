@@ -47,6 +47,7 @@ erpnext.stock.ItemDashboard = Class.extend({
 				item_code: this.item_code,
 				warehouse: this.warehouse,
 				item_group: this.item_group,
+				display_item_group: this.display_item_group,
 				start: this.start,
 				sort_by: this.sort_by,
 				sort_order: this.sort_order,
@@ -62,7 +63,7 @@ erpnext.stock.ItemDashboard = Class.extend({
 			this.result.empty();
 		}
 
-		var context = this.get_item_dashboard_data(data, this.max_count, true);
+		var context = this.get_item_dashboard_data(data, this.max_count, true, this.display_item_group);
 		this.max_count = this.max_count;
 
 		// show more button
@@ -83,7 +84,7 @@ erpnext.stock.ItemDashboard = Class.extend({
 			$("<span class='text-muted small'>"+message+"</span>").appendTo(this.result);
 		}
 	},
-	get_item_dashboard_data: function(data, max_count, show_item) {
+	get_item_dashboard_data: function(data, max_count, show_item, display_item_group) {
 		if(!max_count) max_count = 0;
 		if(!data) data = [];
 
@@ -108,7 +109,8 @@ erpnext.stock.ItemDashboard = Class.extend({
 			data: data,
 			max_count: max_count,
 			can_write:can_write,
-			show_item: show_item || false
+			show_item: show_item || false,
+			display_item_group: display_item_group
 		}
 	}
 })

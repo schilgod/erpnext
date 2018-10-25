@@ -26,7 +26,8 @@ def get_data(item_code=None, warehouse=None, item_group=None,
 	return frappe.db.sql('''
 	select
 		b.item_code, b.warehouse, b.projected_qty, b.reserved_qty,
-		b.reserved_qty_for_production, b.reserved_qty_for_sub_contract, b.actual_qty, b.valuation_rate, item.item_name
+		b.reserved_qty_for_production, b.reserved_qty_for_sub_contract, 
+		b.actual_qty, b.valuation_rate, item.item_name, item.item_group
 	from
 		tabBin b, tabItem item
 	where
